@@ -1,0 +1,5 @@
+@sSteamCmdForcePlatformType linux
+force_install_dir /steamcmd/stationeers
+login anonymous
+app_update 600760 validate
+quit
