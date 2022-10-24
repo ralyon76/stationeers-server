@@ -49,4 +49,4 @@ ENV PUID 1000
 ENV CHOWN_DIRS "/app,/steamcmd"
 
 # Start the server
-CMD [ "bash", "/app/start.sh"]
+ENTRYPOINT ["/app/start.sh"]
