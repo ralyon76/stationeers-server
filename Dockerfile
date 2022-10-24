@@ -3,7 +3,7 @@ FROM steamcmd/steamcmd
 LABEL maintainer="Ralyon"
 
 # Create and set the steamcmd folder as a volume
-RUN mkdir -p /steamcmd/stationeers/saves
+RUN mkdir -p /steamcmd/stationeers
 
 # Add the steamcmd installation script
 ADD install.txt /app/install.txt
@@ -18,37 +18,35 @@ WORKDIR /
 # https://github.com/rocket2guns/StationeersDedicatedServerGuide
 
 # Setup default environment variables for the server
-ENV STATIONEERS_SERVER_STARTUP_ARGUMENTS "-loadlatest "Mars" mars -settings StartLocalHost true AutoSave true ServerVisible true ServerMaxPlayers 20 UPNPEnabled false"
-#ENV STATIONEERS_SERVER_NAME "Drebbel Server"
-ENV STATIONEERS_WORLD_NAME "Mars"
-ENV STATIONEERS_WORLD_TYPE "mars"
-ENV STATIONEERS_SERVER_SAVE_INTERVAL "300"
-ENV STATIONEERS_GAME_PORT "27500"
-#ENV STATIONEERS_QUERY_PORT "27501"
-#ENV STATIONEERS_SERVER_PASSWORD ""
-#ENV STATIONEERS_ADMIN_PASSWORD ""
-
-# Install steamcmd and verify that it is working
-RUN mkdir -p /steamcmd && \
-    curl -s http://media.steampowered.com/installer/steamcmd_linux.tar.gz \
-    | tar -v -C /steamcmd -zx && \
-    chmod +x /steamcmd/steamcmd.sh && \
-    /steamcmd/steamcmd.sh +login anonymous +quit
+ARG WORLD_NAME=Mars
+ARG WORLD_TYPE=mars
+ARG SERVER_DIFFICULTY=Easy
+ARG SERVER_PUBLIC=false
+ARG GAME_PORT=27016
+ARG SERVER_NAME="Ralyons Server"
+ARG SERVER_PASSWORD=""
+ARG SERVER_PLAYERS=10
+ARG SERVER_AUTO_SAVE=true
+ARG SERVER_SAVE_INTERVAL=300
+ARG AUTH_SECRET=""
+ENV STATIONEERS_WORLD_NAME=$WORLD_NAME
+ENV STATIONEERS_WORLD_TYPE=$WORLD_TYPE
+ENV STATIONEERS_SERVER_DIFFICULTY=$SERVER_DIFFICULTY
+ENV STATIONEERS_SERVER_PUBLIC=$SERVER_PUBLIC
+ENV STATIONEERS_GAME_PORT=$GAME_PORT
+ENV STATIONEERS_SERVER_NAME=$SERVER_NAME
+ENV STATIONEERS_SERVER_PASSWORD=$SERVER_PASSWORD
+ENV STATIONEERS_SERVER_PLAYERS=$SERVER_PLAYERS
+ENV STATIONEERS_SERVER_AUTO_SAVE=$SERVER_AUTO_SAVE
+ENV STATIONEERS_SERVER_SAVE_INTERVAL=$SERVER_SAVE_INTERVAL
+ENV STATIONEERS_AUTH_SECRET=$AUTH_SECRET
 
 # Run as a non-root user by default
 ENV PGID 1000
 ENV PUID 1000
 
-# Expose necessary ports
-EXPOSE 27500/tcp
-EXPOSE 27500/udp
-EXPOSE 27501/udp
-
 # Define directories to take ownership of
 ENV CHOWN_DIRS "/app,/steamcmd"
-
-# Expose the volumes
-# VOLUME ["/steamcmd/stationeers"]
 
 # Start the server
 CMD [ "bash", "/app/start.sh"]
