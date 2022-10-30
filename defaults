@@ -1,0 +1,16 @@
+#!/bin/bash
+# The following are default values.
+# They can be overridden by supplying the -e VAR=value option to the containerizer.
+
+
+WORLD_NAME=${WORLD_NAME:-Mars}
+WORLD_TYPE=${WORLD_TYPE:-mars}
+SERVER_DIFFICULTY=${SERVER_DIFFICULTY:-Easy}
+SERVER_PUBLIC=${SERVER_PUBLIC:-false}
+GAME_PORT=${GAME_PORT:-27016}
+SERVER_NAME=${SERVER_NAME:-A Docker Server}
+SERVER_PASSWORD=${SERVER_PASSWORD:-}
+SERVER_PLAYERS=${SERVER_PLAYERS:-10}
+SERVER_AUTO_SAVE=${SERVER_AUTO_SAVE:-true}
+SERVER_SAVE_INTERVAL=${SERVER_SAVE_INTERVAL:-300}
+AUTH_SECRET=${AUTH_SECRET:-}
