@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Include defaults
+/app/defaults
+
 # Enable debugging
 #set -x
 
