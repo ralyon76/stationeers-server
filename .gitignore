@@ -15,6 +15,7 @@ stationeers_data/
 .dotcloud
 .flymake*
 .git/
+.github/
 .gopath/
 .hg/
 .vagrant*
