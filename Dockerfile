@@ -12,7 +12,7 @@ ADD install.txt /app/install.txt
 ADD start_stationeers.sh /app/start.sh
 
 # Copy the defaults
-ADD defaults /app/defaults.sh
+ADD defaults /app/defaults
 
 # Set the current working directory
 WORKDIR /
