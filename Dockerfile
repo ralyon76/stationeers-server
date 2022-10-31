@@ -15,7 +15,7 @@ ADD start_stationeers.sh ${INSTALLDIR}start.sh
 ADD defaults ${INSTALLDIR}defaults
 
 # Set permissions on folder
-RUN ["chmod", "a+x", "${INSTALLDIR}start.sh"]
+#RUN ["chmod", "a+x", "${INSTALLDIR}start.sh"]
 
 ## More info about the new syntax for running the server from the developer:
 # https://github.com/rocket2guns/StationeersDedicatedServerGuide
