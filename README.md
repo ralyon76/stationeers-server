@@ -1,6 +1,6 @@
 # Stationeers server that runs inside a Docker container
 
-**NOTE**: This image will install/update on startup. The path ```/steamcmd/stationeers``` can be mounted on the host for data persistence.
+**NOTE**: This image has stationeers preinstalled on it so it will start up faster. The path ```/home/steam/stationeers/saves``` can be mounted on the host for data persistence of the save maps.
 
 ## How to run the server
 
