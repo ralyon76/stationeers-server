@@ -15,7 +15,7 @@ ADD start_stationeers.sh /app/start.sh
 ADD defaults /app/defaults
 
 # Set permissions on folder
-RUN chown -r 1000.1000 /app
+RUN chown -R 1000.1000 /app
 
 # Set the current working directory
 WORKDIR /
