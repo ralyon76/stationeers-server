@@ -6,14 +6,14 @@ RUN apt-get update && apt-get upgrade -y && \
 	apt-get install -y tmux && \
 	rm -rf /var/lib/apt/lists/*
 
-ENV INSTALLDIR="/home/steam/stationeers/"
+ENV INSTALLDIR="/home/steam/stationeers"
 ENV STEAMCMDDIR="/home/steam/steamcmd"
 
 # Copy the startup script
-COPY --chmod=755 start_stationeers.sh ${INSTALLDIR}start.sh
+COPY --chmod=755 start_stationeers.sh ${INSTALLDIR}/start.sh
 
 # Copy the defaults
-COPY --chmod=755 defaults ${INSTALLDIR}defaults
+COPY --chmod=755 defaults ${INSTALLDIR}/defaults
 
 ## More info about the new syntax for running the server from the developer:
 # https://github.com/rocket2guns/StationeersDedicatedServerGuide
