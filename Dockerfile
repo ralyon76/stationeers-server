@@ -1,34 +1,27 @@
-FROM steamcmd/steamcmd
+FROM cm2network/steamcmd:latest
 ENV DEBIAN_FRONTEND=noninteractive
 LABEL maintainer="Ralyon"
 
-# Create and set the steamcmd folder as a volume
-RUN mkdir -p /steamcmd/stationeers
+RUN apt-get update && apt-get upgrade -y && \
+	apt-get install -y tmux && \
+	rm -rf /var/lib/apt/lists/*
 
-# Add the steamcmd installation script
-ADD install.txt /app/install.txt
+USER steam
+ENV INSTALLDIR="/home/steam/stationeers/"
+RUN ./steamcmd.sh +force_install_dir "$INSTALLDIR" +login anonymous +app_update 600760 validate +quit
+WORKDIR "$INSTALLDIR"
 
 # Copy the startup script
-ADD start_stationeers.sh /app/start.sh
+ADD start_stationeers.sh $INSTALLDIR/start.sh
 
 # Copy the defaults
-ADD defaults /app/defaults
+ADD defaults $INSTALLDIR/defaults
 
 # Set permissions on folder
-RUN ["chmod", "a+x", "/app/start.sh"]
-
-# Set the current working directory
-WORKDIR /
+RUN ["chmod", "a+x", "$INSTALLDIR/start.sh"]
 
 ## More info about the new syntax for running the server from the developer:
 # https://github.com/rocket2guns/StationeersDedicatedServerGuide
 
-# Run as a non-root user by default
-ENV PGID 1000
-ENV PUID 1000
-
-# Define directories to take ownership of
-ENV CHOWN_DIRS "/app,/steamcmd"
-
 # Start the server
-ENTRYPOINT ["/app/start.sh"]
+ENTRYPOINT ["tmux", "new", "./start.sh"]

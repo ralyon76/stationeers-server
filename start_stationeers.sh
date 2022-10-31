@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Include defaults
-/app/defaults
+/home/steam/stationeers/defaults
 
 # Print the user we're currently running as
 echo "Running as user: $(whoami)"
@@ -23,21 +23,6 @@ exit_handler()
 
 # Trap specific signals and forward to the exit handler
 trap 'exit_handler' SIGHUP SIGINT SIGQUIT SIGTERM
-
-# Check that Stationeers exists in the first place
-if [ ! -f "/steamcmd/stationeers/rocketstation_DedicatedServer.x86_64" ]; then
-        # Install Stationeers from install.txt
-        echo ""
-        echo "Installing Stationeers.."
-        echo ""
-        bash /steamcmd/steamcmd.sh +runscript /app/install.txt
-else
-        # Install Stationeers from install.txt
-        echo ""
-        echo "Updating Stationeers.."
-        echo ""
-        bash /steamcmd/steamcmd.sh +runscript /app/install.txt
-fi
 
 # Set the world name
 if [ ! -z ${WORLD_NAME+x} ]; then
@@ -101,7 +86,7 @@ if [ ! -z ${AUTH_SECRET+x} ]; then
 fi
 
 # Set the working directory
-cd /steamcmd/stationeers || exit
+cd /home/steam/stationeers/ || exit
 
 # Run the server
 echo ""
