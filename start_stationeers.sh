@@ -1,14 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Include defaults
 /app/defaults
-
-# Enable debugging
-#set -x
-
-# Setup error handling
-set -e
-set -o pipefail
 
 # Print the user we're currently running as
 echo "Running as user: $(whoami)"
