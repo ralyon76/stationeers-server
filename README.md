@@ -4,7 +4,7 @@ This project is hosted at [https://github.com/ralyon76/stationeers-server](https
 ## Docker image info
 The image is located on github's repository at `ghcr.io/ralyon76/stationeers-server`.
 
-Making a volume for the install directory will keep the data stored between restarts, helping speed up startup and retaining save information. It should be mounted at `/home/steam/stationeers`
+Making a volume for the install directory will keep the data stored between restarts, helping speed up startup and retaining save information. It should be mounted at `/home/steam/stationeers` and needs to be writeable by the steam user id 1000.
 
 This image will install/update stationeers when it starts up and requires at about 3G of space and will grow with the server saves. On the first start, it will take several minutes to load as it downloads the dedicated server files from steam. 
 
@@ -17,6 +17,7 @@ Make sure to adjust the port and environment variables for your setup
 
 ```
 mkdir -p $HOME/stationeers
+chown 1000.1000 $HOME/stationeers
 docker run -d \
   --name stationeers-server \
   -p 27016:27016/udp \
@@ -31,6 +32,7 @@ After downloading the yaml file, make sure to edit the port and environment vari
 
 ```
 mkdir -p $HOME/stationeers/data
+chown 1000.1000 $HOME/stationeers/data
 cd $HOME/stationeers/
 curl -o $HOME/stationeers/docker-compose.yml https://raw.githubusercontent.com/ralyon76/stationeers-server/main/docker-compose.yml
 nano docker-compose.yml #Edit file accordingly
