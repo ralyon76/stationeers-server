@@ -102,10 +102,7 @@ cd ${INSTALLDIR} || exit
 echo ""
 echo "Starting Stationeers with arguments: ${STARTUP_COMMAND} ${STARTUP_SETTINGS}"
 echo ""
-./rocketstation_DedicatedServer.x86_64 \
-  ${STARTUP_COMMAND} \
-  ${STARTUP_SETTINGS}
-  2>&1 &
+./rocketstation_DedicatedServer.x86_64 ${STARTUP_COMMAND} ${STARTUP_SETTINGS} 2>&1 &
 
 child=$!
 wait "$child"
