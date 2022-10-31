@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Include defaults
-${INSTALLDIR}/defaults
+/app/defaults
 
 # Print the user we're currently running as
 echo "Running as user: $(whoami)"
@@ -97,6 +97,7 @@ fi
 
 # Set the working directory
 cd ${INSTALLDIR} || exit
+echo "Moved to stationeers install directory $(pwd)"
 
 # Run the server
 echo ""
