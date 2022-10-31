@@ -25,4 +25,4 @@ RUN ./steamcmd.sh +force_install_dir "$INSTALLDIR" +login anonymous +app_update 
 WORKDIR "$INSTALLDIR"
 
 # Start the server
-ENTRYPOINT ["tmux", "new", "./start.sh"]
+ENTRYPOINT ["./start.sh"]
