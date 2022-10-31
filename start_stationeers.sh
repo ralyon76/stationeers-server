@@ -43,6 +43,7 @@ bash ${STEAMCMDDIR}/steamcmd.sh +force_install_dir "${INSTALLDIR}" +login anonym
 
 # Set the world name
 if [ ! -z ${WORLD_NAME+x} ]; then
+	WORLD_NAME="${WORLD_NAME// /_}"
 	STARTUP_COMMAND="-loadlatest ${WORLD_NAME}"
 else
 	STARTUP_COMMAND="-loadlatest World"
@@ -84,7 +85,8 @@ fi
 
 # Set the server password
 if [ ! -z ${SERVER_PASSWORD+x} ]; then
-        STARTUP_SETTINGS="${STARTUP_SETTINGS} ServerPassword ${SERVER_PASSWORD}"
+	SERVER_PASSWORD=$(echo ${SERVER_PASSWORD} | tr -d \")
+        STARTUP_SETTINGS="${STARTUP_SETTINGS} ServerPassword \"${SERVER_PASSWORD}\""
 fi
 
 # Set the max players allowed on the server
@@ -104,6 +106,7 @@ fi
 
 # Set the server admin password
 if [ ! -z ${AUTH_SECRET+x} ]; then
+	AUTH_SECRET=$(echo ${AUTH_SECRET} | tr -d \")
         STARTUP_SETTINGS="${STARTUP_SETTINGS} ServerAuthSecret ${AUTH_SECRET}"
 fi
 
