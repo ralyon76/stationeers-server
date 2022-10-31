@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Include defaults
-/home/steam/stationeers/defaults
+${INSTALLDIR}/defaults
 
 # Print the user we're currently running as
 echo "Running as user: $(whoami)"
@@ -24,6 +24,16 @@ exit_handler()
 # Trap specific signals and forward to the exit handler
 trap 'exit_handler' SIGHUP SIGINT SIGQUIT SIGTERM
 
+# Check that Stationeers exists in the first place
+if [ ! -f "${INSTALLDIR}/rocketstation_DedicatedServer.x86_64" ]; then
+	# Install Stationeers from install.txt
+	echo "Installing Stationeers.."
+else
+	# Install Stationeers from install.txt
+	echo "Updating Stationeers.."
+fi
+bash ${STEAMCMDDIR}/steamcmd.sh +force_install_dir "$INSTALLDIR" +login anonymous +app_update 600760 validate +quit
+
 # Set the world name
 if [ ! -z ${WORLD_NAME+x} ]; then
        STARTUP_COMMAND="-loadlatest ${WORLD_NAME}"
@@ -35,7 +45,7 @@ if [ ! -z ${WORLD_TYPE+x} ]; then
 fi
 
 # Add logfile location
-STARTUP_COMMAND="${STARTUP_COMMAND} -logfile /steamcmd/stationeers/dedi_logging.txt"
+STARTUP_COMMAND="${STARTUP_COMMAND} -logfile ${INSTALLDIR}/dedi_logging.txt"
 
 # Set the server difficulty
 if [ ! -z ${SERVER_DIFFICULTY+x} ]; then
@@ -86,7 +96,7 @@ if [ ! -z ${AUTH_SECRET+x} ]; then
 fi
 
 # Set the working directory
-cd /home/steam/stationeers/ || exit
+cd ${INSTALLDIR} || exit
 
 # Run the server
 echo ""
