@@ -24,6 +24,13 @@ exit_handler()
 # Trap specific signals and forward to the exit handler
 trap 'exit_handler' SIGHUP SIGINT SIGQUIT SIGTERM
 
+# Add the option for beta release
+if [ "${STATIONEERS_VERSION,,}" = "beta" ]; then
+	INSTALL_OPTS="-beta beta validate +quit"
+else
+	INSTALL_OPTS="validate +quit"
+fi
+
 # Check that Stationeers exists in the first place
 if [ ! -f "${INSTALLDIR}/rocketstation_DedicatedServer.x86_64" ]; then
 	# Install Stationeers from install.txt
@@ -32,16 +39,20 @@ else
 	# Install Stationeers from install.txt
 	echo "Updating Stationeers.."
 fi
-bash ${STEAMCMDDIR}/steamcmd.sh +force_install_dir "$INSTALLDIR" +login anonymous +app_update 600760 validate +quit
+bash ${STEAMCMDDIR}/steamcmd.sh +force_install_dir "${INSTALLDIR}" +login anonymous +app_update 600760 ${INSTALL_OPTS}
 
 # Set the world name
 if [ ! -z ${WORLD_NAME+x} ]; then
-       STARTUP_COMMAND="-loadlatest ${WORLD_NAME}"
+	STARTUP_COMMAND="-loadlatest ${WORLD_NAME}"
+else
+	STARTUP_COMMAND="-loadlatest World"
 fi
 
 # Set the world type
 if [ ! -z ${WORLD_TYPE+x} ]; then
-       STARTUP_COMMAND="${STARTUP_COMMAND} ${WORLD_TYPE}"
+	STARTUP_COMMAND="${STARTUP_COMMAND} ${WORLD_TYPE}"
+else
+	STARTUP_COMMAND="${STARTUP_COMMAND} mars"
 fi
 
 # Add logfile location
@@ -67,7 +78,8 @@ fi
 
 # Set the server name
 if [ ! -z ${SERVER_NAME+x} ]; then
-        STARTUP_SETTINGS="${STARTUP_SETTINGS} ServerName ${SERVER_NAME}"
+	SERVER_NAME=$(echo ${SERVER_NAME} | tr -d \")
+        STARTUP_SETTINGS="${STARTUP_SETTINGS} ServerName \"${SERVER_NAME}\""
 fi
 
 # Set the server password
