@@ -12,7 +12,7 @@ ENV INSTALLDIR="/home/steam/stationeers/"
 COPY --chmod=755 start_stationeers.sh ${INSTALLDIR}start.sh
 
 # Copy the defaults
-ADD defaults ${INSTALLDIR}defaults
+COPY --chmod=755 defaults ${INSTALLDIR}defaults
 
 # Set permissions on folder
 #RUN ["chmod", "a+x", "${INSTALLDIR}start.sh"]
