@@ -5,7 +5,7 @@
 ## How to run the server
 
 1. Set the environment variables you wish to modify from below
-2. Optionally mount ```/steamcmd/stationeers``` somewhere on the host or inside another container to keep your data safe
+2. Optionally mount ```/home/steam/stationeers/saves``` somewhere on the host or inside another container to keep your saves safe
 3. Enjoy!
 
 The following environment variables are available:
