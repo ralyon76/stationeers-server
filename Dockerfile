@@ -9,7 +9,7 @@ RUN apt-get update && apt-get upgrade -y && \
 ENV INSTALLDIR="/home/steam/stationeers/"
 
 # Copy the startup script
-ADD start_stationeers.sh ${INSTALLDIR}start.sh
+COPY --chmod=755 start_stationeers.sh ${INSTALLDIR}start.sh
 
 # Copy the defaults
 ADD defaults ${INSTALLDIR}defaults
