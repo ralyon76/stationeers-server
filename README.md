@@ -1,11 +1,11 @@
 # Stationeers server that runs inside a Docker container
 
-**NOTE**: This image will install/update stationeers when it starts up. The path ```/home/steam/stationeers/saves``` can be mounted on the host for data persistence of the save maps.
+**NOTE**: This image will install/update stationeers when it starts up. The path ```/home/steam/stationeers``` can be mounted on the host for data persistence.
 
 ## How to run the server
 
 1. Set the environment variables you wish to modify from below
-2. Optionally mount ```/home/steam/stationeers/saves``` somewhere on the host or inside another container to keep your saves safe
+2. Optionally mount ```/home/steam/stationeers``` somewhere on the host or inside another container to keep your data safe
 3. Enjoy!
 
 The following environment variables are available:
