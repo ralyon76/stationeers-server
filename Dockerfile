@@ -15,7 +15,7 @@ ADD start_stationeers.sh /app/start.sh
 ADD defaults /app/defaults
 
 # Set permissions on folder
-RUN chown -R 1000.1000 /app
+#RUN chown -R 1000.1000 /app
 
 # Set the current working directory
 WORKDIR /
@@ -24,8 +24,8 @@ WORKDIR /
 # https://github.com/rocket2guns/StationeersDedicatedServerGuide
 
 # Run as a non-root user by default
-ENV PGID 1000
-ENV PUID 1000
+#ENV PGID 1000
+#ENV PUID 1000
 
 # Define directories to take ownership of
 ENV CHOWN_DIRS "/app,/steamcmd"
