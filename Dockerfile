@@ -1,4 +1,4 @@
-FROM cm2network/steamcmd:latest
+FROM cm2network/steamcmd:root
 ENV DEBIAN_FRONTEND=noninteractive
 LABEL maintainer="Ralyon"
 
