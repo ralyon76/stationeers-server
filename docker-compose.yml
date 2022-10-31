@@ -5,7 +5,7 @@ services:
     image: ghcr.io/ralyon76/stationeers-server:main
     container_name: stationeers
     volumes:
-      - ./stationeers:/home/steam/stationeers
+      - ./stationeers/data:/home/steam/stationeers
     ports:
       - 27016:27016/udp
     environment:
