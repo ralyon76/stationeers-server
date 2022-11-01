@@ -22,7 +22,7 @@ docker run -d \
   --name stationeers-server \
   -p 27016:27016/udp \
   -v $HOME/stationeers:/home/steam/stationeers \
-  -e SERVER_NAME="A Docker Server" \
+  -e SERVER_NAME="A_Docker_Server" \
   -e WORLD_TYPE="mars" \
   ghcr.io/ralyon76/stationeers-server
 ```
@@ -41,10 +41,11 @@ docker-compose up
 
 ## Environment variables
 **All variable names and values are case-sensitive!**
+**Spaces are not supported and will be converted to _ in names and removed in passwords!**
 
 | Name | Default | Purpose |
 |----------|----------|-------|
-| `SERVER_NAME` | `A Docker Server` | Publicly visible server name |
+| `SERVER_NAME` | `A_Docker_Server` | Publicly visible server name |
 | `WORLD_TYPE` | `mars` | World type, mainly used for world type to start a new game |
 | `WORLD_NAME` | `Mars` | World name, mainly used for save names etc. |
 | `STATIONEERS_VERSION` | | Set to beta if you want to install the beta branch, anything else will run stable |

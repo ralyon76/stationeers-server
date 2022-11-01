@@ -79,7 +79,7 @@ fi
 
 # Set the server name
 if [ ! -z ${SERVER_NAME+x} ]; then
-	SERVER_NAME=$(echo ${SERVER_NAME} | tr -d \")
+	SERVER_NAME="${SERVER_NAME// /_}"
         STARTUP_SETTINGS="${STARTUP_SETTINGS} ServerName '${SERVER_NAME}'"
 fi
 
