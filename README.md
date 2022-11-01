@@ -28,7 +28,7 @@ docker run -d \
 ```
 
 ## How to run the server in Docker Compose
-After downloading the yaml file, make sure to edit the port and environment variables for your setup
+After downloading the yaml file, make sure to edit the port and environment variables for your setup and that any true/false values are quoted (due to compose restrictions).
 
 ```
 mkdir -p $HOME/stationeers/data
