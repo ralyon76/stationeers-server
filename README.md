@@ -57,6 +57,8 @@ docker-compose up
 | `SERVER_PUBLIC` | `false` | Set to true if you want your server advertised on the public list |
 | `AUTH_SECRET` | | Set a password to use the serverrun command in the client |
 
+More detailed information on the options and commands inside the game can be found here: https://github.com/rocket2guns/StationeersDedicatedServerGuide
+
 ## License
 
 See [LICENSE](LICENSE).
