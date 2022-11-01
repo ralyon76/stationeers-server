@@ -5,11 +5,11 @@ services:
     image: ghcr.io/ralyon76/stationeers-server:main
     container_name: stationeers
     volumes:
-      - ./stationeers:/home/steam/stationeers
+      - ./stationeers/data:/home/steam/stationeers
     ports:
       - 27016:27016/udp
     environment:
       SERVER_NAME: A Docker Server
       WORLD_TYPE: mars
       SERVER_PASSWORD: yourpass
-      SERVER_PUBLIC: true
+      SERVER_PUBLIC: "false"

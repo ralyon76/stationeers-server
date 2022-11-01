@@ -28,7 +28,7 @@ docker run -d \
 ```
 
 ## How to run the server in Docker Compose
-After downloading the yaml file, make sure to edit the port and environment variables for your setup
+After downloading the yaml file, make sure to edit the port and environment variables for your setup and that any true/false values are quoted (due to compose restrictions).
 
 ```
 mkdir -p $HOME/stationeers/data
@@ -47,7 +47,7 @@ docker-compose up
 | `SERVER_NAME` | `A Docker Server` | Publicly visible server name |
 | `WORLD_TYPE` | `mars` | World type, mainly used for world type to start a new game |
 | `WORLD_NAME` | `Mars` | World name, mainly used for save names etc. |
-| `STATIONEERS_VERSION` | | Set to beta if you want to install the beta brach, anything else will run stable |
+| `STATIONEERS_VERSION` | | Set to beta if you want to install the beta branch, anything else will run stable |
 | `SERVER_PLAYERS` | `10` | Set the max number of players that can connect |
 | `SERVER_AUTO_SAVE` | `true` | Set to false if you do not want the server automatically saving |
 | `SERVER_SAVE_INTERVAL` | `300` | Automatic save interval in seconds |
@@ -56,6 +56,8 @@ docker-compose up
 | `SERVER_PASSWORD` | | Server password |
 | `SERVER_PUBLIC` | `false` | Set to true if you want your server advertised on the public list |
 | `AUTH_SECRET` | | Set a password to use the serverrun command in the client |
+
+More detailed information on the options and commands inside the game can be found here: https://github.com/rocket2guns/StationeersDedicatedServerGuide
 
 ## License
 
