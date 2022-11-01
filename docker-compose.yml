@@ -12,4 +12,4 @@ services:
       SERVER_NAME: A Docker Server
       WORLD_TYPE: mars
       SERVER_PASSWORD: yourpass
-      SERVER_PUBLIC: false
+      SERVER_PUBLIC: "false"
