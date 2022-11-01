@@ -80,13 +80,13 @@ fi
 # Set the server name
 if [ ! -z ${SERVER_NAME+x} ]; then
 	SERVER_NAME=$(echo ${SERVER_NAME} | tr -d \")
-        STARTUP_SETTINGS="${STARTUP_SETTINGS} ServerName "\""${SERVER_NAME}"\"
+        STARTUP_SETTINGS=${STARTUP_SETTINGS} ServerName "${SERVER_NAME}"
 fi
 
 # Set the server password
 if [ ! -z ${SERVER_PASSWORD+x} ]; then
 	SERVER_PASSWORD=$(echo ${SERVER_PASSWORD} | tr -d \")
-        STARTUP_SETTINGS="${STARTUP_SETTINGS} ServerPassword "\""${SERVER_PASSWORD}"\"
+        STARTUP_SETTINGS=${STARTUP_SETTINGS} ServerPassword "${SERVER_PASSWORD}"
 fi
 
 # Set the max players allowed on the server
