@@ -9,7 +9,7 @@ services:
     ports:
       - 27016:27016/udp
     environment:
-      SERVER_NAME: A Docker Server
+      SERVER_NAME: A_Docker_Server
       WORLD_TYPE: mars
       SERVER_PASSWORD: yourpass
       SERVER_PUBLIC: "false"
