@@ -80,7 +80,7 @@ fi
 # Set the server name
 if [ ! -z ${SERVER_NAME+x} ]; then
 	SERVER_NAME=$(echo ${SERVER_NAME} | tr -d \")
-        STARTUP_SETTINGS="${STARTUP_SETTINGS} ServerName '{SERVER_NAME}'"
+        STARTUP_SETTINGS="${STARTUP_SETTINGS} ServerName '${SERVER_NAME}'"
 fi
 
 # Set the server password
