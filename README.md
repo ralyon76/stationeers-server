@@ -52,7 +52,7 @@ docker-compose up
 | `SERVER_PLAYERS` | `10` | Set the max number of players that can connect |
 | `SERVER_AUTO_SAVE` | `true` | Set to false if you do not want the server automatically saving |
 | `SERVER_SAVE_INTERVAL` | `300` | Automatic save interval in seconds |
-| `SERVER_DIFFICULTY` | `Easy` | Set difficulty level to Easy, Normal or Stationeer |
+| `SERVER_DIFFICULTY` | `Normal` | Set difficulty level to Easy, Normal or Stationeer |
 | `GAME_PORT` | `27016` | Used for both incoming client connections (Make sure this is forwarded and not firewalled) |
 | `SERVER_PASSWORD` | | Server password |
 | `SERVER_PUBLIC` | `false` | Set to true if you want your server advertised on the public list |
