@@ -4,6 +4,9 @@ LABEL maintainer="Ralyon: ralyon76+gh@gmail.com"
 
 RUN apt-get update && apt-get upgrade -y && \
 	apt-get install -y tmux && \
+	sed -i 's/bullseye/bookworm/g' /etc/apt/sources.list && \
+	apt-get update && apt-get install -y libc6 libstdc++6 && \
+	sed -i 's/bookworm/bullseye/g' /etc/apt/sources.list && \
 	rm -rf /var/lib/apt/lists/*
 
 ENV INSTALLDIR="/home/steam/stationeers"
